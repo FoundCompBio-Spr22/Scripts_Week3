@@ -12,6 +12,25 @@ You can print the value of a variable by using `echo` and prefacing the name of 
 
 `echo $myVariable`
 
+```
+# Notes 2/1/22
+
+Scripts are series of commands, not just one command at a time, to tell a computer to do something specific.
+working command line, terminal, bash commands all mean the same thing- they all work in the Unix environment.
+shell- environment of commands we can use, we are using the bash shell
+variable- generic name given to something that holds a piece of information
+shells hold variables. 
+  - ex: myVariable=2 (assigning a value to a variable)
+  - = is the assignment operator
+  - operator- changes a variable in some way.
+  - value=variable 
+command line does not allow spaces anywhere in this command. gives an error. 
+to see the value of the variables we've made, use command: echo, which prints to the screen
+echo prints things right back to us, and it can show us the values we created
+  - echo $myVariable -> output = 2. 
+
+```
+
 ## Math in Bash
 
 In general, bash isn't very good for mathematical operations, but it can be done in several ways. Probably the easiest is to wrap a mathematical expression in _double_ parentheses and precede it with a `$`, since you pretty much always want the _value_ of the mathematical result.
@@ -29,6 +48,21 @@ NOTE: bash can only handle _integers_ and not floating-point numbers (i.e., deci
 Try this. What happens?
 
 ```
+# Notes 2/1/22
+
+Bash is generally not great for math, it is cumbersome and limited. Python is better. 
+simple math at the command line is useful to know. 
+wrap mathematical equation in double parenthesis to do it. 
+include echo to print the answer back.
+  - ex: echo $(( math ))
+  - not space sensitive inside the double parenthesis. 
+We can assignment mathematical results to a variable using myVariable=$((math)) then echo. 
+  - ex: echo $(( 10 % 3)) -> remainder (from long division) here would be remainder of 1 
+Floating point numbers- anything with a decimal place in them. Bash does not handle these numbers well. 
+
+```
+
+```
 myVar=3
 echo $myVar
 ((myVar++))
@@ -36,8 +70,11 @@ echo $myVar
 ((myVar++))
 echo $myVar
 ```
-
 What does the `++` operator do?
+
+```
+The ++ operator is called an increment operator, adds one to the value. 
+```
 
 ## Downloading a file from the command line
 
@@ -48,6 +85,20 @@ While we could copy and paste the contents of this file into a new file using th
 `curl https://raw.githubusercontent.com/IntroToCompBioLSU-Spr20/Scripts2_Week4/master/chiari.summary_statistics.csv`
 
 What happens? How could we save the contents that we're downloading to a file directly?
+
+```
+# Notes 1/2/22
+
+a command line way to download contets of a file: curl
+command is: curl then the URL. 
+when we used this command, it displayed the contents of the file in the terminal, it did not save it. 
+Use the > to make a new file or >> to append the file. 
+curl URL > new file name. Then we get a summary of the file instead of all the contents. 
+to view the file: use cat- shows the text written in the file. use head -n# of lines you want to limit the info in the output. 
+file extension .csv (comma separated values, often times a table)
+every line represents a new entry, and every value on the line is separated by commas in CSV. 
+
+```
 
 ## Searching Within Files
 
@@ -76,6 +127,17 @@ will only look for the string `five` if it is at the very beginning of a line.
 will only look for the string `five` if it is at the end of a line.
 
 There are many other possible patterns that can be used with `grep`. If you search online for grep cheat sheets, you can find a lot more information.
+
+```
+# Notes 1/2/22
+
+grep __ (what we are searching for) path to file to find certain things within the file. 
+to make it more specific, anchor the search pattern to the beginning or end of line
+grep and $ meand the end of a line 
+to anchor to the beginning of a line ^,__
+There are ways to extract values from the middle of a line as well. 
+
+```
 
 ## Redirecting Output Streams
 
@@ -107,6 +169,19 @@ Sometimes we need to use or store the output from a (series of) bash command(s),
 myVariable=`ls | head -n1`
 ```
 
+```
+# Notes 1/2/22
+
+outputs can be sent to files, and into other commands, not just the terminal screen
+use pipe "|" use to do it. 
+  - Ex: extract the 57th line from a file. head -n57 __file__ | tail -n1 
+  - ^ extract lines 1-57 and the last line of the command (line #57).  
+variables can also hold text/strings. 
+we cannot pipe output into a variable. but we can:
+  - myVariable=`ls | head -n1` then echo $myVariable saves the file name. 
+  - `_` (back ticks) tells command line to execute this first. 
+```
+
 ## Parsing File Contents
 
 Another very powerful command is called `awk`, which can do lots of different forms of text parsing. For the purposes of this course, we will focus on using `awk` to extract individual columns (generally separated by spaces or tabs) from a file. The syntax we will use looks like this
@@ -120,6 +195,18 @@ This will print out the first column. To print the third column, we would use
 To print both the first and third columns, we could do this
 
 `awk '{print $1,$3}' test.txt`
+
+```
+#Notes 1/2/22
+
+sed - stream editor command. used to find and replace patterns. 
+sed 's/,/ /g' File.csv >> (redirect to new file)(find commas and replace with spaces)
+awk used to extract columns from a file.
+  - `awk '{print $4}' test.txt` extracts just the numers in the 4th column. 
+There are many ways to use sed and awk. 
+  - `awk '{print $2,$4}' test.txt` gives content from both columns. 
+
+```
 
 ## Command line find-and-replace
 
