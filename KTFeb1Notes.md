@@ -252,3 +252,62 @@ Scripts can be written to use command-line arguments. To access the arguments fr
 
 For practice, go back to `myScript.sh` that we created earlier and change `$USER` to `$1`. Now, run it by typing `myScript.sh <YOUR_NAME>`
 
+```
+#Notes 2/3/22
+
+when using grep to find a particular number in a specific column, use:
+  * (most general wildcard for command line, can represent any number of any character)
+  * when using grep has a slightly different meaning- it means a repitition of any
+  character. a wildcard for any character in grep is a period (.). 
+  grep .* means any combination of numbers and letters (general wildcard, same as * on 
+  command line)
+  so, from the example last class: (grep ^.*,*,*,14) anchoring from beginning. but we can 
+  also anchor from the end.
+  
+#Scripts: 
+use more than one command at a time, they can be very complicated. 
+start off as a plain text file (nano FileName.sh) .sh abbreviates "shell" used commonly for scripts- it is still a plain text file.
+First line indicates that it is a script: #! 
+Then give a path that tells the operating system to look for the shell itself (bash command): #! /bin/bash (bin stands for binary, bash is a program within it). 
+Create a hello world program, shows code is working: echo "Hello World!"
+Save File, Exit nano. 
+Cat FileName.sh -> #! bin/bash. "Hello World!" 
+./FileName.sh -> permission denied. 
+add execute permissions: chmod u+x FileName.sh (color coded) now ./FileName.sh works.
+
+Allow script to accept command line arguments
+open script in nano. 
+  command: echo $1 (1 is a variale that holds first command line argument in a script). 
+strings are a collection of characters together, we can "glue" then together in echo commands. 
+  Command: echo $1" is now in a sentence."
+save and exit nano
+  ./FileName.sh Biology -> Biology is now in a sentence. 
+as scripts become more complicated, leave comments to help keep track of what is going on. the more the comments the better. 
+  # anything types with a pound sign is treated as a comment. seen when we open the script. 
+Some variables are always available to us: 
+  $USER stores name of user logged in. 
+```
+```
+# If.. Else
+flow control, means sometimes we need script to do different things. There are different types of flow control- the most common being an if else statement. 
+  If <test_something>
+  then <do_this_thing1> (if true)
+  else <do_this_thing2> (if false)
+  fi
+We will use this a lot. We need some kind of comparison.
+
+Ex: 
+a=2
+if [ $a -lt 3 ] (means if a<3) **(must include spaces)**
+then echo "$a is less than 3." (print out "statement")
+else echo "$a is NOT less than 3." (print out "statement")
+fi (tells operating system we are finished, this is just if backwards). 
+
+if else statements can be nested, tests more conditions if the first one is true.
+good practice to indent echo statements to make things more readable.
+almost always if else statements are written in a script. 
+```
+```
+Practice Exercise #1 Commands: ctl c is a way to kill a command. 
+  5. sed 's/pattern/replace_with/g' (s and g have meanings)  
+```
