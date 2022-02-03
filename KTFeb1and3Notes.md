@@ -87,7 +87,7 @@ While we could copy and paste the contents of this file into a new file using th
 What happens? How could we save the contents that we're downloading to a file directly?
 
 ```
-# Notes 1/2/22
+# Notes 2/1/22
 
 a command line way to download contets of a file: curl
 command is: curl then the URL. 
@@ -129,7 +129,7 @@ will only look for the string `five` if it is at the end of a line.
 There are many other possible patterns that can be used with `grep`. If you search online for grep cheat sheets, you can find a lot more information.
 
 ```
-# Notes 1/2/22
+# Notes 2/1/22
 
 grep __ (what we are searching for) path to file to find certain things within the file. 
 to make it more specific, anchor the search pattern to the beginning or end of line
@@ -170,7 +170,7 @@ myVariable=`ls | head -n1`
 ```
 
 ```
-# Notes 1/2/22
+# Notes 2/1/22
 
 outputs can be sent to files, and into other commands, not just the terminal screen
 use pipe "|" use to do it. 
@@ -197,7 +197,7 @@ To print both the first and third columns, we could do this
 `awk '{print $1,$3}' test.txt`
 
 ```
-#Notes 1/2/22
+#Notes 2/1/22
 
 sed - stream editor command. used to find and replace patterns. 
 sed 's/,/ /g' File.csv >> (redirect to new file)(find commas and replace with spaces)
@@ -288,7 +288,7 @@ Some variables are always available to us:
   $USER stores name of user logged in. 
 ```
 ```
-# If.. Else
+# If.. Else 2/3/22
 flow control, means sometimes we need script to do different things. There are different types of flow control- the most common being an if else statement. 
   If <test_something>
   then <do_this_thing1> (if true)
